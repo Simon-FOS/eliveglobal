@@ -19,7 +19,10 @@ const index_view = async (req, res) => {
             pageLogo: page_logo
         });
     } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
     }
 };
 
@@ -31,7 +34,10 @@ const about_view = async (req, res) => {
             pageLogo: page_logo
         });
     } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
     }
 };
 
@@ -43,7 +49,10 @@ const services_view = async (req, res) => {
             pageLogo: page_logo
         });
     } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
     }
 };
 
@@ -55,7 +64,25 @@ const projects_view = async (req, res) => {
             pageLogo: page_logo
         });
     } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
+    }
+};
+
+// Blog Page
+const blog_view = async (req, res) => {
+    try {
+        res.render('blog', {
+            pageTitle: "blog",
+            pageLogo: page_logo
+        });
+    } catch (err) {
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
     }
 };
 
@@ -67,14 +94,19 @@ const contact_view = async (req, res) => {
             pageLogo: page_logo
         });
     } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
+        res.status(500).render('./errors/500', {
+            message: 'Internal Server Error',
+            error: err.message
+        });
     }
 };
 
+// Export all controllers
 export {
     index_view,
     about_view,
     services_view,
     projects_view,
+    blog_view,
     contact_view
 };

@@ -1,0 +1,477 @@
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3e;
+            line-height: 1.5;
+        }
+
+        h1, h2, h3, h4, h5, .section-title, .navbar-brand, .btn, .hero-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+        }
+
+                /* Hero Section (blog specific) */
+        .blog-hero {
+            background: linear-gradient(135deg, #f88ed5 0%, #4b1422 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+            margin-top: 5%;
+            
+        }
+        .blog-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .blog-hero .lead {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Buttons (matching existing btn-primary / secondary) */
+        .btn-primary {
+            background-color: #f5c542;
+            border: none;
+            color: #1e2a3e;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            transition: all 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #e0b12e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+        }
+        .btn-secondary {
+            background-color: transparent;
+            border: 2px solid #f5c542;
+            color: #f5c542;
+            font-weight: 600;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+        }
+        .btn-secondary:hover {
+            background-color: #f5c542;
+            color: #1e2a3e;
+        }
+        .btn-outline-gold {
+            border: 2px solid #f5c542;
+            color: #f5c542;
+            background: transparent;
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 500;
+        }
+        .btn-outline-gold:hover {
+            background-color: #f5c542;
+            color: #0b2b26;
+        }
+
+        /* Blog cards grid */
+        .blog-section {
+            padding: 5rem 0;
+            background: #fefcf5;
+        }
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            transition: transform 0.25s ease, box-shadow 0.2s;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 30px rgba(0,0,0,0.1);
+        }
+        .blog-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: 0.3s;
+        }
+        .blog-card-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-meta {
+            font-size: 0.85rem;
+            color: #b98c2b;
+            margin-bottom: 0.75rem;
+            display: flex;
+            gap: 1rem;
+            font-weight: 500;
+        }
+        .blog-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+        .blog-excerpt {
+            color: #4a5568;
+            margin-bottom: 1.2rem;
+            flex-grow: 1;
+        }
+        .read-more {
+            font-weight: 600;
+            color: #0b2b26;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: 0.2s;
+        }
+        .read-more i {
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+        .read-more:hover {
+            color: #f5c542;
+        }
+        .read-more:hover i {
+            transform: translateX(4px);
+        }
+
+        /* Single article modal / full view (lightbox style) */
+        .article-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.85);
+            z-index: 1050;
+            overflow-y: auto;
+            backdrop-filter: blur(5px);
+        }
+        .modal-article-container {
+            max-width: 950px;
+            margin: 2rem auto;
+            background: white;
+            border-radius: 32px;
+            position: relative;
+            padding: 2rem;
+        }
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 28px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #333;
+            background: #f1f1f1;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .close-modal:hover {
+            background: #f5c542;
+            color: #000;
+        }
+        .full-article-img {
+            width: 100%;
+            max-height: 480px;
+            object-fit: cover;
+            border-radius: 24px;
+            margin: 1rem 0 1.5rem 0;
+        }
+        .full-article-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+        .article-full-content {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #2d3748;
+        }
+
+        /* Admin Panel (simple inline for adding articles) */
+        .admin-panel {
+            background: #f8f9fa;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid #e9ecef;
+        }
+        .admin-toggle {
+            background: #0b2b26;
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-weight: 500;
+        }
+        .admin-form input, .admin-form textarea {
+            border-radius: 20px;
+            border: 1px solid #ced4da;
+            padding: 0.6rem 1rem;
+        }
+        .footer {
+            background-color: #0b2b26;
+            color: #cddde0;
+            padding: 3rem 0 2rem;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            .blog-hero h1 { font-size: 2rem; }
+            .modal-article-container { margin: 1rem; padding: 1.5rem; }
+        }
+    </style>
+
+
+
+<!-- Blog Hero -->
+<section class="blog-hero">
+    <div class="container">
+        <h1><i class="fas fa-pen-fancy me-2"></i> Construction Wisdom</h1>
+        <p class="lead">by <strong>Engr. Emmanuel Uleh</strong> — CEO, Elive Global Consult & Construction</p>
+        <p>Insights on common building errors, cost management, and expert construction guidance.</p>
+    </div>
+</section>
+
+<!-- Main Blog Section -->
+<section class="blog-section">
+    <div class="container">
+       
+
+        <!-- Blog posts grid -->
+        <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
+            <h2 class="section-title" style="font-family: Poppins;">Latest from Engr. Uleh</h2>
+            <span class="text-muted"><i class="fas fa-newspaper"></i> Practical construction knowledge</span>
+        </div>
+        <div class="row g-4" id="blogPostsGrid">
+            <!-- Articles will be injected dynamically -->
+        </div>
+        
+        <!-- Empty state message (if needed) -->
+        <div id="noPostsMsg" class="text-center py-5 d-none">
+            <i class="fas fa-hard-hat fa-3x mb-3 text-secondary"></i>
+            <h4>No articles yet</h4>
+            <p>Engr. Emmanuel Uleh will soon share insights on building errors & cost management.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Modal for reading full article (lightbox) -->
+<div id="articleModal" class="article-modal">
+    <div class="modal-article-container">
+        <div class="close-modal" id="closeModalBtn">&times;</div>
+        <div id="modalDynamicContent">
+            <!-- dynamic full article loaded -->
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // ------------------------------
+    // BLOG DATA (preloaded with articles by Engr. Emmanuel Uleh)
+    // Each article includes image, title, excerpt, full content, date
+    // ------------------------------
+    let blogArticles = [
+        {
+            id: 1,
+            title: "5 Common Foundation Errors That Compromise Building Stability",
+            excerpt: "From poor soil testing to inadequate reinforcement, discover the top foundation mistakes that lead to structural failures and how to avoid them.",
+            content: "<p>A solid foundation is the bedrock of any durable structure. Yet many builders overlook essential steps: <strong>1. Inadequate soil investigation</strong> – always conduct geotechnical surveys. <strong>2. Incorrect reinforcement placement</strong> – rebar spacing and cover must meet structural drawings. <strong>3. Poor concrete mix</strong> – use specified grades. <strong>4. Ignoring waterproofing</strong> – dampness leads to cracks. <strong>5. Rushing curing process</strong> – allow at least 7 days for proper curing. As a consultant, I've seen multi-million naira projects crack within months due to these errors. Prioritize quality control and engage experienced supervisors.</p><p>Remember: cutting corners on foundation costs 10x more in repairs later.</p>",
+            image: "/assets/img/elive28.jpg",  // construction foundation concept
+            date: "March 15, 2025"
+        },
+        {
+            id: 2,
+            title: "Cost Management Blueprint: How to Save 20% Without Sacrificing Quality",
+            excerpt: "Strategic procurement, value engineering, and phased construction can drastically reduce waste. Learn cost-saving techniques used by top firms.",
+            content: "<p>Effective cost management begins at design stage. <strong>1. Value Engineering</strong>: Identify alternative materials that offer same strength at lower cost (e.g., optimizing steel sections). <strong>2. Bulk Procurement</strong>: Coordinate with suppliers for volume discounts. <strong>3. Avoid Scope Creep</strong>: Strictly follow approved plans to prevent budget overrun. <strong>4. Phased Construction</strong>: Prioritize critical areas, finishing non-essential later. <strong>5. Digital Quantity Surveying</strong>: Use software to reduce material waste.</p><p>At Elive Global, we saved a client ₦4.8 million on a duplex project simply by redesigning the roof truss system without compromising aesthetics. Proper planning beats last-minute firefighting.</p><img src='https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&auto=format' class='img-fluid rounded my-3' alt='cost saving'>",
+            image: "/assets/img/elive26.jpg",
+            date: "March 28, 2025"
+        },
+        {
+            id: 3,
+            title: "Avoid These Electrical & Plumbing Installation Blunders",
+            excerpt: "Hidden services like electrical conduits and plumbing are often compromised by untrained workers. Here's how to enforce best practices.",
+            content: "<p>Electrical and plumbing systems are the arteries of a building. Common errors: <strong>• Conduits embedded without proper cover</strong> leads to wall cracks. <strong>• Wrong pipe grades for drainage</strong> cause constant blockage. <strong>• Mixing cable sizes</strong> risks fire hazards. <strong>• No pressure testing before plastering</strong> — always test plumbing lines to detect leaks early.</p><p>Supervision is non-negotiable. I insist on third-party inspections for MEP works. A small oversight can lead to wall hacking later, increasing costs and weakening structure. Follow the approved drawings and hire certified tradesmen.</p>",
+            image: "/assets/img/elive38.jpg",
+            date: "April 2, 2025"
+        },
+        {
+            id: 4,
+            title: "The True Cost of Cheap Labour: Why Skilled Workers Matter",
+            excerpt: "Hiring inexperienced labour might seem economical upfront, but rework, material wastage, and safety risks outweigh the savings.",
+            content: "<p>I've witnessed projects where developers hired untrained masons to save daily wages, only to end up demolishing entire blockworks. Skilled artisans ensure correct alignment, proper mortar mixing, and efficient use of materials. Additionally, safety practices reduce site accidents. At Elive Global, we train local workers and supervise closely. Investing in skilled labour yields better finishes, longevity, and overall project value. Don't treat labour as a cost — treat it as an investment in quality.</p>",
+            image: "/assets/img/elive3.jpg",
+            date: "April 5, 2025"
+        }
+    ];
+
+    // Helper to render blog cards
+    function renderBlogPosts() {
+        const grid = document.getElementById('blogPostsGrid');
+        const noMsg = document.getElementById('noPostsMsg');
+        if (!grid) return;
+        
+        if (blogArticles.length === 0) {
+            grid.innerHTML = '';
+            noMsg.classList.remove('d-none');
+            return;
+        }
+        noMsg.classList.add('d-none');
+        let cardsHtml = '';
+        blogArticles.forEach(article => {
+            const imgUrl = article.image && article.image.trim() !== '' ? article.image : 'https://placehold.co/600x400/2c5f4e/white?text=Construction+Insight';
+            const displayDate = article.date || 'April 2025';
+            cardsHtml += `
+                <div class="col-md-6 col-lg-4">
+                    <div class="blog-card">
+                        <img src="${imgUrl}" class="blog-img" alt="${escapeHtml(article.title)}" onerror="this.src='https://placehold.co/600x400/2c5f4e/white?text=Construction+Image'">
+                        <div class="blog-card-body">
+                            <div class="blog-meta"><span><i class="far fa-calendar-alt"></i> ${escapeHtml(displayDate)}</span><span><i class="fas fa-user"></i> Engr. Uleh</span></div>
+                            <h3 class="blog-title">${escapeHtml(article.title)}</h3>
+                            <p class="blog-excerpt">${escapeHtml(article.excerpt.substring(0, 110))}${article.excerpt.length > 110 ? '...' : ''}</p>
+                            <div class="mt-auto">
+                                <a href="javascript:void(0)" class="read-more" data-id="${article.id}">Read Full Article <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+        grid.innerHTML = cardsHtml;
+        
+        // Attach click events to each read-more link
+        document.querySelectorAll('.read-more').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const id = parseInt(link.getAttribute('data-id'));
+                const article = blogArticles.find(a => a.id === id);
+                if (article) openFullArticle(article);
+            });
+        });
+    }
+
+    function openFullArticle(article) {
+        const modal = document.getElementById('articleModal');
+        const modalContentDiv = document.getElementById('modalDynamicContent');
+        if (!modal || !modalContentDiv) return;
+        
+        const fullImage = article.image && article.image.trim() !== '' ? article.image : 'https://placehold.co/900x500/2c5f4e/white?text=Construction+Article';
+        const formattedDate = article.date || 'Recent Publication';
+        modalContentDiv.innerHTML = `
+            <div>
+                <h2 class="full-article-title">${escapeHtml(article.title)}</h2>
+                <div class="text-muted mb-3"><i class="far fa-calendar-alt me-1"></i> ${escapeHtml(formattedDate)} • By Engr. Emmanuel Uleh</div>
+                <img src="${fullImage}" class="full-article-img" alt="${escapeHtml(article.title)}" onerror="this.src='https://placehold.co/900x500/2c5f4e/white?text=Visual+Insight'">
+                <div class="article-full-content">
+                    ${article.content}
+                </div>
+                <hr>
+                <div class="mt-3 d-flex gap-2">
+                    <button class="btn btn-secondary" id="closeModalFooterBtn">Close</button>
+                    <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
+                </div>
+            </div>
+        `;
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+        
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const closeFooterBtn = document.getElementById('closeModalFooterBtn');
+        const closeHandler = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+        if (closeModalBtn) closeModalBtn.onclick = closeHandler;
+        if (closeFooterBtn) closeFooterBtn.onclick = closeHandler;
+        window.onclick = (e) => { if (e.target === modal) closeHandler(); };
+    }
+
+    // Helper to escape HTML
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+            return c;
+        });
+    }
+
+    // Admin: add new article (CEO)
+    const toggleBtn = document.getElementById('toggleAdminFormBtn');
+    const formContainer = document.getElementById('adminFormContainer');
+    if (toggleBtn) {
+        toggleBtn.addEventListener('click', () => {
+            if (formContainer.style.display === 'none' || formContainer.style.display === '') {
+                formContainer.style.display = 'block';
+                toggleBtn.innerHTML = '<i class="fas fa-times-circle"></i> Close Form';
+            } else {
+                formContainer.style.display = 'none';
+                toggleBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Write New Article';
+            }
+        });
+    }
+    
+    const newPostForm = document.getElementById('newPostForm');
+    if (newPostForm) {
+        newPostForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const title = document.getElementById('postTitle').value.trim();
+            const excerpt = document.getElementById('postExcerpt').value.trim();
+            let content = document.getElementById('postContent').value.trim();
+            let image = document.getElementById('postImage').value.trim();
+            let rawDate = document.getElementById('postDate').value.trim();
+            
+            if (!title || !excerpt || !content) {
+                alert("Please fill at least Title, Excerpt, and Content.");
+                return;
+            }
+            if (!image) image = "/assets/img/construction-blog-default.jpg";
+            const date = rawDate ? rawDate : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+            
+            const newId = blogArticles.length > 0 ? Math.max(...blogArticles.map(a => a.id)) + 1 : 5;
+            const newArticle = {
+                id: newId,
+                title: title,
+                excerpt: excerpt,
+                content: `<p>${content.replace(/\n/g, '</p><p>')}</p>`,  // simple paragraph formatting
+                image: image,
+                date: date
+            };
+            blogArticles.unshift(newArticle); // newest first
+            renderBlogPosts();
+            // Reset form and hide admin panel optionally
+            newPostForm.reset();
+            formContainer.style.display = 'none';
+            if (toggleBtn) toggleBtn.innerHTML = '<i class="fas fa-plus-circle"></i> Write New Article';
+            alert("✅ New article published successfully! It appears at the top.");
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+        renderBlogPosts();
+    });
+</script>

@@ -235,10 +235,17 @@
         }
         
         .team-img {
-            height: 250px;
-            object-fit: cover;
-            width: 100%;
-        }
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.team-card:hover .team-img {
+    transform: scale(1.05);
+}
         
         /* Work Philosophy Section */
         .philosophy-section {
@@ -612,7 +619,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="team-card">
-                        <img src="/assets/elive1.jpg" alt="Team Member" class="team-img">
+                        <img src="/assets/img/elive01.jpg" alt="Team Member" class="team-img">
                         <div class="p-3">
                             <h5>Engnr. Emmanuel Uleh</h5>
                             <p class="text-primary">Founder & CEO</p>
@@ -622,7 +629,7 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="team-card">
-                        <img src="/assets/elive02.jpg" alt="Team Member" class="team-img">
+                        <img src="/assets/img/elive02.jpg" alt="Team Member" class="team-img">
                         <div class="p-3">
                             <h5>Mrs Uleh</h5>
                             <p class="text-primary">Head of Operations</p>
@@ -632,11 +639,11 @@
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="team-card">
-                        <img src="/assets/elive45.jpg" alt="Team Member" class="team-img">
+                        <img src="/assets/img/elive45.jpeg" alt="Team Member" class="team-img">
                         <div class="p-3">
                             <h5>Arch. Daniel Bassey</h5>
                             <p class="text-primary">Technical Director</p>
-                            <p>Michael brings extensive technical expertise to our projects, ensuring innovative solutions and compliance with industry standards.</p>
+                            <p>Daniel brings extensive technical expertise to our projects, ensuring innovative solutions and compliance with industry standards.</p>
                         </div>
                     </div>
                 </div>

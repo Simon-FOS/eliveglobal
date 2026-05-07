@@ -1,3 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Elive Global Consult - Construction Wisdom by Engr. Emmanuel Uleh</title>
+    <!-- Google Fonts & Bootstrap Icons + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -17,14 +27,13 @@
             font-weight: 600;
         }
 
-                /* Hero Section (blog specific) */
+        /* Hero Section (blog specific) */
         .blog-hero {
             background: linear-gradient(135deg, #f88ed5 0%, #4b1422 100%);
             padding: 4rem 0;
             text-align: center;
             color: white;
-            margin-top: 5%;
-            
+            margin-top: 0;  /* clean start, removed old 5% margin */
         }
         .blog-hero h1 {
             font-size: 3rem;
@@ -46,11 +55,14 @@
             padding: 0.7rem 1.8rem;
             border-radius: 40px;
             transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
         }
         .btn-primary:hover {
             background-color: #e0b12e;
             transform: translateY(-2px);
             box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+            color: #1e2a3e;
         }
         .btn-secondary {
             background-color: transparent;
@@ -59,6 +71,8 @@
             font-weight: 600;
             padding: 0.7rem 1.8rem;
             border-radius: 40px;
+            text-decoration: none;
+            display: inline-block;
         }
         .btn-secondary:hover {
             background-color: #f5c542;
@@ -147,7 +161,7 @@
             transform: translateX(4px);
         }
 
-        /* Single article modal / full view (lightbox style) */
+        /* Single article modal / lightbox style */
         .article-modal {
             display: none;
             position: fixed;
@@ -238,8 +252,8 @@
             .modal-article-container { margin: 1rem; padding: 1.5rem; }
         }
     </style>
-
-
+</head>
+<body>
 
 <!-- Blog Hero -->
 <section class="blog-hero">
@@ -254,6 +268,7 @@
 <section class="blog-section">
     <div class="container">
        
+    
 
         <!-- Blog posts grid -->
         <div class="d-flex justify-content-between align-items-center mb-4 flex-wrap">
@@ -273,7 +288,7 @@
     </div>
 </section>
 
-<!-- Modal for reading full article (lightbox) -->
+<!-- Modal for reading full article (lightbox) with FIXED "Discuss Your Project" -> /contact -->
 <div id="articleModal" class="article-modal">
     <div class="modal-article-container">
         <div class="close-modal" id="closeModalBtn">&times;</div>
@@ -283,12 +298,10 @@
     </div>
 </div>
 
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     // ------------------------------
     // BLOG DATA (preloaded with articles by Engr. Emmanuel Uleh)
-    // Each article includes image, title, excerpt, full content, date
     // ------------------------------
     let blogArticles = [
         {
@@ -369,6 +382,7 @@
         });
     }
 
+    // openFullArticle with the "Discuss Your Project" button pointing to /contact (CORRECTED)
     function openFullArticle(article) {
         const modal = document.getElementById('articleModal');
         const modalContentDiv = document.getElementById('modalDynamicContent');
@@ -385,9 +399,10 @@
                     ${article.content}
                 </div>
                 <hr>
-                <div class="mt-3 d-flex gap-2">
+                <div class="mt-3 d-flex gap-2 flex-wrap">
                     <button class="btn btn-secondary" id="closeModalFooterBtn">Close</button>
-                    <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
+                    <!-- FIX: The button that says discuss your project should be linked to /contact -->
+                    <a href="/contact" class="btn btn-primary"><i class="fas fa-comment-dots"></i> Discuss Your Project</a>
                 </div>
             </div>
         `;
@@ -402,10 +417,11 @@
         };
         if (closeModalBtn) closeModalBtn.onclick = closeHandler;
         if (closeFooterBtn) closeFooterBtn.onclick = closeHandler;
+        // Ensure clicking background closes
         window.onclick = (e) => { if (e.target === modal) closeHandler(); };
     }
 
-    // Helper to escape HTML
+    // Helper to escape HTML safely
     function escapeHtml(str) {
         if (!str) return '';
         return str.replace(/[&<>]/g, function(m) {
@@ -413,12 +429,10 @@
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
             return m;
-        }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
-            return c;
         });
     }
 
-    // Admin: add new article (CEO)
+    // Admin panel logic (add new article by CEO)
     const toggleBtn = document.getElementById('toggleAdminFormBtn');
     const formContainer = document.getElementById('adminFormContainer');
     if (toggleBtn) {
@@ -451,11 +465,16 @@
             const date = rawDate ? rawDate : new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
             
             const newId = blogArticles.length > 0 ? Math.max(...blogArticles.map(a => a.id)) + 1 : 5;
+            // Convert line breaks to paragraphs more safely: if user includes HTML we keep, but basic formatting
+            let formattedContent = content;
+            if (!formattedContent.includes('<p>') && !formattedContent.includes('<div>')) {
+                formattedContent = `<p>${formattedContent.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>')}</p>`;
+            }
             const newArticle = {
                 id: newId,
                 title: title,
                 excerpt: excerpt,
-                content: `<p>${content.replace(/\n/g, '</p><p>')}</p>`,  // simple paragraph formatting
+                content: formattedContent,
                 image: image,
                 date: date
             };
@@ -475,3 +494,6 @@
         renderBlogPosts();
     });
 </script>
+
+</body>
+</html>

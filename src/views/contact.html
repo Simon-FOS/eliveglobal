@@ -1,4 +1,19 @@
-<style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Contact Us | Elive Global Consult - Construction & Consultancy</title>
+    <!-- Google Fonts & Bootstrap Icons + Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         :root {
             --primary-red: #D32F2F;
             --primary-purple: #7B1FA2;
@@ -67,7 +82,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('/assets/img/elive03.jpg') center/cover no-repeat;
+            background: url('https://placehold.co/1920x600/7B1FA2/ffffff?text=Construction+Background') center/cover no-repeat;
             opacity: 0.2;
             z-index: 0;
         }
@@ -140,14 +155,14 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
         
-        .form-control {
+        .form-control, .form-select {
             padding: 12px 15px;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
             transition: all 0.3s ease;
         }
         
-        .form-control:focus {
+        .form-control:focus, .form-select:focus {
             border-color: var(--primary-purple);
             box-shadow: 0 0 0 0.2rem rgba(123, 31, 162, 0.25);
         }
@@ -188,10 +203,6 @@
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .business-hours h4 {
-            margin-bottom: 15px;
         }
         
         .hours-item {
@@ -424,6 +435,7 @@
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .back-to-top.active {
@@ -436,370 +448,368 @@
             transform: translateY(-3px);
         }
         
-        /* Form Validation Styles */
-        .was-validated .form-control:valid {
-            border-color: #198754;
-            padding-right: calc(1.5em + 0.75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(0.375em + 0.1875rem) center;
-            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-        }
-        
-        .was-validated .form-control:invalid {
-            border-color: #dc3545;
-            padding-right: calc(1.5em + 0.75rem);
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath d='m5.8 3.6.4.4.4-.4'/%3e%3cpath d='M6 7v2'/%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right calc(0.375em + 0.1875rem) center;
-            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
-        }
-        
-        .invalid-feedback {
+        .alert-toast {
+            position: fixed;
+            bottom: 120px;
+            right: 30px;
+            z-index: 1100;
+            min-width: 280px;
+            background: white;
+            border-left: 5px solid #28a745;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            padding: 1rem;
             display: none;
-            width: 100%;
-            margin-top: 0.25rem;
-            font-size: 0.875em;
-            color: #dc3545;
         }
-        
-        .was-validated .form-control:invalid ~ .invalid-feedback {
-            display: block;
-        }
-        
-        /* Responsive adjustments */
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .page-header {
-                padding: 100px 0 60px;
-            }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                bottom: 20px;
-                right: 20px;
-                font-size: 25px;
-            }
-            
-            .back-to-top {
-                bottom: 20px;
-                left: 20px;
-                width: 45px;
-                height: 45px;
-            }
+            .page-header h1 { font-size: 2.5rem; }
+            .page-header { padding: 100px 0 60px; }
+            .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; font-size: 25px; }
+            .back-to-top { bottom: 20px; left: 20px; width: 45px; height: 45px; }
         }
     </style>
+</head>
+<body>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <div class="container">
-            <div class="page-header-content">
-                <h1>Contact Us</h1>
-                <p class="lead">Get in touch with our team for professional construction and consultancy services</p>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Contact</li>
-                    </ol>
-                </nav>
-            </div>
+<!-- Navigation (minimal for context) -->
+<nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <span>🏗️ Elive Global Consult</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Projects</a></li>
+                <li class="nav-item"><a class="nav-link active" href="#">Contact</a></li>
+            </ul>
         </div>
-    </section>
+    </div>
+</nav>
 
-    <!-- Contact Section -->
-    <section class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="row">
-                <div class="col-lg-8 mb-4 mb-lg-0">
-                    <div class="contact-card">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4">Send Us a Message</h3>
-                            <form id="contactForm" class="needs-validation" novalidate>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="name" class="form-label">Full Name *</label>
-                                        <input type="text" class="form-control" id="name" required>
-                                        <div class="invalid-feedback">
-                                            Please provide your full name.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="email" class="form-label">Email Address *</label>
-                                        <input type="email" class="form-control" id="email" required>
-                                        <div class="invalid-feedback">
-                                            Please provide a valid email address.
-                                        </div>
-                                    </div>
+<!-- Page Header -->
+<section class="page-header">
+    <div class="container">
+        <div class="page-header-content">
+            <h1>Contact Us</h1>
+            <p class="lead">Get in touch with our team for professional construction and consultancy services</p>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Contact</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section with Formspree integration -->
+<section class="contact-section">
+    <div class="container">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="row">
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                <div class="contact-card">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4">Send Us a Message</h3>
+                        <!-- Formspree endpoint: action URL provided -->
+                        <form id="contactForm" action="https://formspree.io/f/xqejnkwz" method="POST">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="name" class="form-label">Full Name *</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div class="invalid-feedback">Please provide your full name.</div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="phone" class="form-label">Phone Number *</label>
-                                        <input type="tel" class="form-control" id="phone" required>
-                                        <div class="invalid-feedback">
-                                            Please provide your phone number.
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="service" class="form-label">Preferred Service *</label>
-                                        <select class="form-select" id="service" required>
-                                            <option value="" selected disabled>Select a service</option>
-                                            <option value="consultancy">Consultancy</option>
-                                            <option value="design-construction">Design & Construction</option>
-                                            <option value="renovation">Renovation</option>
-                                            <option value="project-management">Project Management</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                            Please select a service.
-                                        </div>
-                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback">Please provide a valid email address.</div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="subject" class="form-label">Subject *</label>
-                                    <input type="text" class="form-control" id="subject" required>
-                                    <div class="invalid-feedback">
-                                        Please provide a subject for your message.
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="phone" class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    <div class="invalid-feedback">Please provide your phone number.</div>
                                 </div>
-                                <div class="mb-4">
-                                    <label for="message" class="form-label">Message *</label>
-                                    <textarea class="form-control" id="message" rows="5" required></textarea>
-                                    <div class="invalid-feedback">
-                                        Please provide your message.
-                                    </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="service" class="form-label">Preferred Service *</label>
+                                    <select class="form-select" id="service" name="service" required>
+                                        <option value="" selected disabled>Select a service</option>
+                                        <option value="consultancy">Consultancy</option>
+                                        <option value="design-construction">Design & Construction</option>
+                                        <option value="renovation">Renovation</option>
+                                        <option value="project-management">Project Management</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <div class="invalid-feedback">Please select a service.</div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Send Message</button>
-                            </form>
-                        </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="subject" class="form-label">Subject *</label>
+                                <input type="text" class="form-control" id="subject" name="subject" required>
+                                <div class="invalid-feedback">Please provide a subject for your message.</div>
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label">Message *</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                <div class="invalid-feedback">Please provide your message.</div>
+                            </div>
+                            <!-- Additional hidden field to prevent spam (optional) but formspree handles -->
+                            <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                            <div id="formStatus" class="mt-3"></div>
+                        </form>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="contact-info">
-                        <h3 class="mb-4">Contact Information</h3>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Our Address</h4>
-                                <p>No. 10 New Jos-North Layout, Lamingo Road,<br>Adjacent Rockland Academy,<br>Jos, Plateau State, Nigeria</p>
-                            </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="contact-info">
+                    <h3 class="mb-4">Contact Information</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-details">
+                            <h4>Our Address</h4>
+                            <p>No. 10 New Jos-North Layout, Lamingo Road,<br>Adjacent Rockland Academy,<br>Jos, Plateau State, Nigeria</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Email Us</h4>
-                                <p>eliveglobalconsult@gmail.com</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p>eliveglobalconsult@gmail.com</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>Call Us</h4>
-                                <p>+234-8058477161<br>+234-7038166592</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p>+234-8058477161<br>+234-7038166592</p>
                         </div>
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fab fa-whatsapp"></i>
-                            </div>
-                            <div class="contact-details">
-                                <h4>WhatsApp</h4>
-                                <p>07038166592</p>
-                            </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div class="contact-details">
+                            <h4>WhatsApp</h4>
+                            <p>07038166592</p>
                         </div>
-                        
-                        <div class="business-hours">
-                            <h4>Business Hours</h4>
-                            <div class="hours-item">
-                                <span>Monday - Friday:</span>
-                                <span>8:00 AM - 6:00 PM</span>
-                            </div>
-                            <div class="hours-item">
-                                <span>Saturday:</span>
-                                <span>9:00 AM - 2:00 PM</span>
-                            </div>
-                            <div class="hours-item">
-                                <span>Sunday:</span>
-                                <span>Closed</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-4">
-                            <a href="https://wa.me/2347038166592" class="btn btn-whatsapp w-100 mb-2" target="_blank">
-                                <i class="fab fa-whatsapp me-2"></i> Chat on WhatsApp
-                            </a>
-                            <a href="tel:+2347038166592" class="btn btn-secondary w-100">
-                                <i class="fas fa-phone me-2"></i> Call Now
-                            </a>
-                        </div>
+                    </div>
+                    <div class="business-hours">
+                        <h4>Business Hours</h4>
+                        <div class="hours-item"><span>Monday - Friday:</span><span>8:00 AM - 6:00 PM</span></div>
+                        <div class="hours-item"><span>Saturday:</span><span>9:00 AM - 2:00 PM</span></div>
+                        <div class="hours-item"><span>Sunday:</span><span>Closed</span></div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="https://wa.me/2347038166592" class="btn btn-whatsapp w-100 mb-2" target="_blank"><i class="fab fa-whatsapp me-2"></i> Chat on WhatsApp</a>
+                        <a href="tel:+2347038166592" class="btn btn-secondary w-100"><i class="fas fa-phone me-2"></i> Call Now</a>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Map Section -->
-    <section class="map-section">
-        <div class="container-fluid">
-            <div class="map-container">
-                <div class="map-placeholder">
-                    <div>
-                        <h3>Our Location</h3>
-                        <p>No. 10 New Jos-North Layout, Lamingo Road, Jos, Plateau State, Nigeria</p>
-                        <a href="https://www.google.com/maps/search/?api=1&query=No.+10+New+Jos-North+Layout,+Lamingo+Road,+Jos,+Plateau+State,+Nigeria" 
-                           class="btn btn-primary mt-3" target="_blank">
-                            <i class="fas fa-map-marked-alt me-2"></i> View on Google Maps
-                        </a>
-                    </div>
+<!-- Map Section (External link) -->
+<section class="map-section">
+    <div class="container-fluid p-0">
+        <div class="map-container">
+            <div class="map-placeholder">
+                <div>
+                    <h3>Our Location</h3>
+                    <p>No. 10 New Jos-North Layout, Lamingo Road, Jos, Plateau State, Nigeria</p>
+                    <a href="https://www.google.com/maps/search/?api=1&query=No.+10+New+Jos-North+Layout,+Lamingo+Road,+Jos,+Plateau+State,+Nigeria" class="btn btn-primary mt-3" target="_blank"><i class="fas fa-map-marked-alt me-2"></i> View on Google Maps</a>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Quick Contact Section -->
-    <section class="quick-contact-section">
-        <div class="container">
-            <h2 class="section-title">Quick Contact Options</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="quick-contact-card">
-                        <div class="quick-contact-icon">
-                            <i class="fas fa-phone-alt"></i>
-                        </div>
-                        <h4>Call Us</h4>
-                        <p>Speak directly with our team for immediate assistance</p>
-                        <a href="tel:+2348058477161,  +2347038166592" class="btn btn-secondary mt-3">Call Now</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="quick-contact-card">
-                        <div class="quick-contact-icon">
-                            <i class="fab fa-whatsapp"></i>
-                        </div>
-                        <h4>WhatsApp</h4>
-                        <p>Chat with us on WhatsApp for quick responses</p>
-                        <a href="https://wa.me/2347038166592" class="btn btn-whatsapp mt-3" target="_blank">Message Us</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="quick-contact-card">
-                        <div class="quick-contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <h4>Email Us</h4>
-                        <p>Send us an email for detailed inquiries</p>
-                        <a href="mailto:eliveglobalconsult@gmail.com" class="btn btn-secondary mt-3">Send Email</a>
-                    </div>
-                </div>
+<!-- Quick Contact -->
+<section class="quick-contact-section">
+    <div class="container">
+        <h2 class="section-title">Quick Contact Options</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4"><div class="quick-contact-card"><div class="quick-contact-icon"><i class="fas fa-phone-alt"></i></div><h4>Call Us</h4><p>Speak directly with our team for immediate assistance</p><a href="tel:+2348058477161" class="btn btn-secondary mt-3">Call Now</a></div></div>
+            <div class="col-md-4 mb-4"><div class="quick-contact-card"><div class="quick-contact-icon"><i class="fab fa-whatsapp"></i></div><h4>WhatsApp</h4><p>Chat with us on WhatsApp for quick responses</p><a href="https://wa.me/2347038166592" class="btn btn-whatsapp mt-3" target="_blank">Message Us</a></div></div>
+            <div class="col-md-4 mb-4"><div class="quick-contact-card"><div class="quick-contact-icon"><i class="fas fa-envelope"></i></div><h4>Email Us</h4><p>Send us an email for detailed inquiries</p><a href="mailto:eliveglobalconsult@gmail.com" class="btn btn-secondary mt-3">Send Email</a></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="faq-section">
+    <div class="container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="row justify-content-center"><div class="col-lg-10">
+            <div class="accordion" id="contactFAQ">
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNew">How long does a project typically take to complete?</button></h2><div id="collapseNew" class="accordion-collapse collapse show" data-bs-parent="#contactFAQ"><div class="accordion-body">Project timeline varies based on scope, size, complexity, and funding. We provide a detailed timeline assessment during our free initial consultation based on your specific project requirements.</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne">How quickly can you respond to my inquiry?</button></h2><div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#contactFAQ"><div class="accordion-body">We typically respond to all inquiries within 24 hours. For urgent matters, we recommend calling us directly or using WhatsApp for the fastest response.</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo">Do you offer free consultations?</button></h2><div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#contactFAQ"><div class="accordion-body">Yes, we offer free initial consultations to discuss your project requirements, budget, and timeline. This helps us understand your needs and provide accurate recommendations.</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseThree">What information should I provide when contacting you?</button></h2><div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#contactFAQ"><div class="accordion-body">To help us serve you better, please provide details about your project type (residential, commercial, renovation), approximate budget, timeline, and any specific requirements or challenges you anticipate.</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour">Do you work outside of Jos, Plateau State?</button></h2><div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#contactFAQ"><div class="accordion-body">Yes, we serve clients throughout Nigeria. While we are based in Jos, we have successfully completed projects in various states across the country.</div></div></div>
+                <div class="accordion-item"><h2 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFive">How do I get a quote for my project?</button></h2><div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#contactFAQ"><div class="accordion-body">You can request a quote by filling out our contact form with your project details, or by scheduling a consultation. We'll assess your requirements and provide a detailed quotation tailored to your specific needs.</div></div></div>
             </div>
-        </div>
-    </section>
+        </div></div>
+    </div>
+</section>
 
-    <!-- FAQ Section -->
-    <section class="faq-section">
-        <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="accordion" id="contactFAQ">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingNew">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseNew" aria-expanded="true" aria-controls="collapseNew">
-                                    How long does a project typically take to complete?
-                                </button>
-                            </h2>
-                            <div id="collapseNew" class="accordion-collapse collapse show" aria-labelledby="headingNew" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    Project timeline varies based on scope, size, complexity, and funding. We provide a detailed timeline assessment during our free initial consultation based on your specific project requirements.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    How quickly can you respond to my inquiry?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    We typically respond to all inquiries within 24 hours. For urgent matters, we recommend calling us directly or using WhatsApp for the fastest response.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Do you offer free consultations?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    Yes, we offer free initial consultations to discuss your project requirements, budget, and timeline. This helps us understand your needs and provide accurate recommendations.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    What information should I provide when contacting you?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    To help us serve you better, please provide details about your project type (residential, commercial, renovation), approximate budget, timeline, and any specific requirements or challenges you anticipate.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Do you work outside of Jos, Plateau State?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    Yes, we serve clients throughout Nigeria. While we are based in Jos, we have successfully completed projects in various states across the country.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    How do I get a quote for my project?
-                                </button>
-                            </h2>
-                            <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#contactFAQ">
-                                <div class="accordion-body">
-                                    You can request a quote by filling out our contact form with your project details, or by scheduling a consultation. We'll assess your requirements and provide a detailed quotation tailored to your specific needs.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2 class="mb-4">Ready to Start Your Project?</h2>
+        <p class="lead mb-4">Contact us today for a free consultation and let's discuss how we can bring your vision to life.</p>
+        <a href="tel:+2347038166592" class="btn btn-primary me-3">Call Now</a>
+        <a href="https://wa.me/2347038166592" class="btn btn-secondary" target="_blank">Chat on WhatsApp</a>
+    </div>
+</section>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container">
-            <h2 class="mb-4">Ready to Start Your Project?</h2>
-            <p class="lead mb-4">Contact us today for a free consultation and let's discuss how we can bring your vision to life.</p>
-            <a href="tel:+2347038166592" class="btn btn-primary me-3">Call Now</a>
-            <a href="https://wa.me/2347038166592" class="btn btn-secondary" target="_blank">Chat on WhatsApp</a>
-        </div>
-    </section>
+<!-- Footer -->
+<footer>
+    <div class="container"><div class="row"><div class="col-md-4 mb-4"><h5 class="footer-heading">Elive Global Consult</h5><p>Professional construction & consultancy services delivering excellence across Nigeria.</p></div><div class="col-md-4 mb-4"><h5 class="footer-heading">Quick Links</h5><div class="footer-links"><a href="#">Home</a><a href="#">Services</a><a href="#">Projects</a><a href="#">Contact</a></div></div><div class="col-md-4 mb-4"><h5 class="footer-heading">Connect With Us</h5><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div></div><div class="copyright"><p>&copy; 2025 Elive Global Consult. All rights reserved.</p></div></div>
+</footer>
+
+<!-- Floating elements -->
+<a href="https://wa.me/2347038166592" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="back-to-top" id="backToTop"><i class="fas fa-arrow-up"></i></div>
+
+<!-- Bootstrap JS and custom interactive validation + Formspree AJAX handling -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    (function() {
+        // Back to top button
+        const backBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) backBtn.classList.add('active');
+            else backBtn.classList.remove('active');
+        });
+        backBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        // Handle form submission with fetch to Formspree, and client-side validation before sending
+        const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        // Helper to show custom toast message
+        function showMessage(msg, isError = false) {
+            let existingToast = document.querySelector('.alert-toast');
+            if(existingToast) existingToast.remove();
+            const toastDiv = document.createElement('div');
+            toastDiv.className = 'alert-toast';
+            toastDiv.style.display = 'block';
+            toastDiv.style.borderLeftColor = isError ? '#dc3545' : '#28a745';
+            toastDiv.innerHTML = `<div class="d-flex align-items-center"><i class="fas ${isError ? 'fa-exclamation-circle' : 'fa-check-circle'} me-2" style="color:${isError ? '#dc3545' : '#28a745'}; font-size:1.5rem;"></i><div>${msg}</div><button type="button" class="btn-close ms-auto" style="font-size:0.8rem;" onclick="this.parentElement.parentElement.remove()"></button></div>`;
+            document.body.appendChild(toastDiv);
+            setTimeout(() => { if(toastDiv) toastDiv.remove(); }, 5000);
+        }
+        
+        // Reset validation styles
+        function resetValidation() {
+            form.classList.remove('was-validated');
+            const inputs = form.querySelectorAll('.form-control, .form-select');
+            inputs.forEach(input => {
+                input.classList.remove('is-invalid', 'is-valid');
+            });
+        }
+        
+        // Manual HTML5 validation check
+        function isFormValid() {
+            let isValid = true;
+            const requiredFields = form.querySelectorAll('[required]');
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                } else {
+                    field.classList.remove('is-invalid');
+                    field.classList.add('is-valid');
+                }
+                // Email specific pattern
+                if (field.type === 'email' && field.value.trim() && !/^\S+@\S+\.\S+$/.test(field.value.trim())) {
+                    field.classList.add('is-invalid');
+                    isValid = false;
+                }
+            });
+            const selectField = document.getElementById('service');
+            if (selectField && (!selectField.value || selectField.value === "")) {
+                selectField.classList.add('is-invalid');
+                isValid = false;
+            } else if(selectField) selectField.classList.remove('is-invalid');
+            
+            return isValid;
+        }
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            resetValidation();
+            
+            if (!isFormValid()) {
+                form.classList.add('was-validated');
+                showMessage('Please fill all required fields correctly.', true);
+                return;
+            }
+            
+            // Change button state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+            
+            // Gather form data
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: { 'Accept': 'application/json' }
+                });
+                
+                if (response.ok) {
+                    showMessage('✅ Message sent successfully! We will get back to you shortly.');
+                    form.reset();
+                    resetValidation();
+                    // remove any is-valid classes
+                    const allInputs = form.querySelectorAll('.form-control, .form-select');
+                    allInputs.forEach(inp => inp.classList.remove('is-valid', 'is-invalid'));
+                } else {
+                    const errorData = await response.json();
+                    let errorMsg = 'Oops! There was a problem. Please try again.';
+                    if(errorData && errorData.errors) errorMsg = errorData.errors.map(e=>e.message).join(', ');
+                    showMessage(errorMsg, true);
+                }
+            } catch (err) {
+                console.error(err);
+                showMessage('Network error. Please check your connection and try again.', true);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+        
+        // Live validation removal on input
+        const allInputs = form.querySelectorAll('input, select, textarea');
+        allInputs.forEach(input => {
+            input.addEventListener('input', function() {
+                if (this.hasAttribute('required') && this.value.trim() !== '') {
+                    this.classList.remove('is-invalid');
+                    if(this.type !== 'email' || (this.type==='email' && /^\S+@\S+\.\S+$/.test(this.value.trim())))
+                        this.classList.add('is-valid');
+                } else if (this.hasAttribute('required') && this.value.trim() === '') {
+                    this.classList.remove('is-valid');
+                }
+                if(this.type === 'email' && this.value.trim() && !/^\S+@\S+\.\S+$/.test(this.value.trim())) {
+                    this.classList.add('is-invalid');
+                }
+            });
+            if(input.tagName === 'SELECT') {
+                input.addEventListener('change', function() {
+                    if(this.value) this.classList.remove('is-invalid');
+                });
+            }
+        });
+    })();
+</script>
+</body>
+</html>
